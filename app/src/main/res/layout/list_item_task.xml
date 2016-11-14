@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white">
+
+        <TextView
+            android:id="@+id/tv_daily_time"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@android:color/white"
+            android:text="11:00"
+            android:textColor="#ff202020"
+            android:textSize="@dimen/font_size_display" />
+
+        <CheckBox
+            android:id="@+id/cb_enable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@android:color/white"
+        android:text="打开静音"
+        android:textColor="#ff404040"
+        android:textSize="@dimen/font_size_button" />
+
+    <TextView
+        android:id="@+id/tv_week_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@android:color/white"
+        android:text="周一    周二    周三    周四    周五    周六    周日" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@android:color/white"
+        android:gravity="end">
+
+
+        <ImageButton
+            android:id="@+id/btn_edit"
+            android:layout_width="64dp"
+            android:layout_height="32dp"
+            android:layout_marginRight="8dp"
+            android:background="@color/colorAccent"
+            android:padding="4dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_edit_white_48dp" />
+
+        <ImageButton
+            android:id="@+id/btn_delete"
+            android:layout_width="64dp"
+            android:layout_height="32dp"
+            android:layout_marginLeft="8dp"
+            android:background="@color/colorAccent"
+            android:padding="4dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_delete_white_48dp" />
+    </LinearLayout>
+
+</LinearLayout>
