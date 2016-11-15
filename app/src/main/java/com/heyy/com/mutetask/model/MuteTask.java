@@ -16,6 +16,7 @@ public abstract class MuteTask extends Task {
 
     MuteTask(Parcel parcel) {
         super(parcel);
+        mVibrate = parcel.readInt() == 1;
     }
 
     public boolean getVibrate() {
@@ -36,4 +37,12 @@ public abstract class MuteTask extends Task {
     public String getExtra() {
         return mVibrate ? "1" : "0";
     }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        super.writeToParcel(dest, flags);
+        dest.writeInt(mVibrate ? 1 : 0);
+    }
+
+
 }

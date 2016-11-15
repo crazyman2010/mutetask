@@ -4,6 +4,7 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 
 import com.heyy.com.mutetask.MainApplication;
 import com.heyy.com.mutetask.common.DateUtils;
@@ -100,8 +101,10 @@ public class TaskManager {
     public void postTask(Task task) {
         Context context = MainApplication.getOurApplicationContext();
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+        Bundle b = new Bundle();
+        b.putParcelable(TaskExecuteBroadcastReceiver.EXTRA_PARCELABLE_TASK, task);
         Intent intent = new Intent(context, TaskExecuteBroadcastReceiver.class);
-        intent.putExtra(TaskExecuteBroadcastReceiver.EXTRA_PARCELABLE_TASK, task);
+        intent.putExtra("bundle", b);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(context, task.getId(), intent, PendingIntent.FLAG_UPDATE_CURRENT);
         Calendar calendar = Calendar.getInstance();
         int currentDayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
@@ -137,8 +140,7 @@ public class TaskManager {
     public void cancelTask(Task task) {
         PendingIntent pendingIntent = mPendingIntents.remove(task);
         if (pendingIntent != null) {
-            XLogger.i("cancel task [ " + task.getTitle() + "-" + task.getId() + " ] run at "
-                    + task.getDailyTimeHour() + ":" + task.getDailyTimeMinute());
+            XLogger.i("cancel task [ " + task.getTitle() + "-" + task.getId() + " ] ");
             Context context = MainApplication.getOurApplicationContext();
             AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
             alarmManager.cancel(pendingIntent);

@@ -21,15 +21,15 @@ public class MuteEnableTask extends MuteTask {
         super(source);
     }
 
-    public static Creator CREATOR = new Creator() {
+    public static Creator<MuteEnableTask> CREATOR = new Creator<MuteEnableTask>() {
         @Override
-        public Object createFromParcel(Parcel source) {
+        public MuteEnableTask createFromParcel(Parcel source) {
             return new MuteEnableTask(source);
         }
 
         @Override
-        public Object[] newArray(int size) {
-            return new Object[0];
+        public MuteEnableTask[] newArray(int size) {
+            return new MuteEnableTask[size];
         }
     };
 
@@ -39,12 +39,12 @@ public class MuteEnableTask extends MuteTask {
         Context context = MainApplication.getOurApplicationContext();
         AudioManager audioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
         audioManager.setRingerMode(mVibrate ? AudioManager.RINGER_MODE_VIBRATE : AudioManager.RINGER_MODE_SILENT);
-        processStream(audioManager,AudioManager.STREAM_NOTIFICATION,0);
-        processStream(audioManager,AudioManager.STREAM_MUSIC,AudioManager.FLAG_SHOW_UI);
+        processStream(audioManager, AudioManager.STREAM_NOTIFICATION, 0);
+        processStream(audioManager, AudioManager.STREAM_MUSIC, AudioManager.FLAG_SHOW_UI);
     }
 
-    private void processStream(AudioManager audioManager,int streamType,int flags){
-        audioManager.setStreamVolume(streamType,0,flags);
+    private void processStream(AudioManager audioManager, int streamType, int flags) {
+        audioManager.setStreamVolume(streamType, 0, flags);
     }
 
     @Override

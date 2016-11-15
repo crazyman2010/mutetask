@@ -37,15 +37,15 @@ public class MuteDisableTask extends MuteTask {
         super(source);
     }
 
-    public static Creator CREATOR = new Creator() {
+    public static Creator<MuteDisableTask> CREATOR = new Creator<MuteDisableTask>() {
         @Override
-        public Object createFromParcel(Parcel source) {
+        public MuteDisableTask createFromParcel(Parcel source) {
             return new MuteDisableTask(source);
         }
 
         @Override
-        public Object[] newArray(int size) {
-            return new Object[0];
+        public MuteDisableTask[] newArray(int size) {
+            return new MuteDisableTask[size];
         }
     };
 

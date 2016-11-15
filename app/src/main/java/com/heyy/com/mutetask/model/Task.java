@@ -12,7 +12,7 @@ import java.util.Calendar;
  * Created by mo on 16-11-6.
  */
 
-public abstract class Task implements Cloneable, Parcelable {
+public abstract class Task implements Parcelable {
     protected int mId;
     protected String mTitle;
     protected int mDailyTime;
@@ -31,15 +31,6 @@ public abstract class Task implements Cloneable, Parcelable {
         mWeekTime.put(Calendar.WEDNESDAY, Calendar.WEDNESDAY);
         mWeekTime.put(Calendar.THURSDAY, Calendar.THURSDAY);
         mWeekTime.put(Calendar.FRIDAY, Calendar.FRIDAY);
-    }
-
-    public Task copy() {
-        try {
-            return (Task) this.clone();
-        } catch (CloneNotSupportedException e) {
-            e.printStackTrace();
-        }
-        return null;
     }
 
     public Task(Parcel source) {
